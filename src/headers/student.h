@@ -13,7 +13,7 @@ struct Student {
     char *first_name;
     char *last_name;
     char *matricule;
-    double notes[5];
+    float *notes;
     Date *birth_date;
 };
 

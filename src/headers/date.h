@@ -8,9 +8,9 @@
 typedef struct Date Date;
 
 struct Date {
-    int day;
-    int month;
-    int year;
+    char *day;
+    char *month;
+    char *year;
 };
 
 char *parse_date(const Date *);

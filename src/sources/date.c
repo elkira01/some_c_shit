@@ -5,16 +5,18 @@
 
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 char *parse_date(const Date *date) {
-    char *date_str = "";
+    char *date_str = malloc(4 * sizeof(*date_str));
 
-    printf("Year");
-    date_str = strcat("bonjour", "/");
-    // date_str = strcat(date_str, (char *) date->month);
-    // date_str = strcat(date_str, "/");
-    // date_str = strcat(date_str, (char *) date->year);
+
+    strcat(date_str, date->day);
+    strcat(date_str, "/");
+    strcat(date_str, date->month);
+    strcat(date_str, "/");
+    strcat(date_str, date->year);
 
 
     return date_str;
