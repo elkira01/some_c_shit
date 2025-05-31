@@ -4,6 +4,8 @@
 #include "../headers/student_list.h"
 
 #include <stdio.h>
+#include <stdlib.h>
+
 
 StudentList *init_list(const Student student) {
     StudentList *list = malloc(sizeof(*list));
@@ -38,24 +40,32 @@ StudentNode *find_node_in_list(const StudentList *list, const char *matricule) {
     while (node != NULL && *(node->student.matricule) != *matricule) {
         node = node->next;
     }
+
     if (node != NULL) {
         return node;
     }
 
-    return NULL;
+    return node;
 }
 
-int remove_node_from_list(const StudentList *list, const char *matricule) {
+int remove_node_from_list(StudentList *list, const char *matricule) {
     StudentNode *node = list->head;
     StudentNode *memo_prev = node;
 
     while (node != NULL && *(node->student.matricule) != *matricule) {
+        print_student(node->student);
         memo_prev = node;
         node = node->next;
     }
 
     if (node != NULL) {
-        memo_prev->next = node->next;
+        if (node == list->head) {
+            list->head = node->next;
+        } else if (node->next == NULL) {
+            memo_prev->next = NULL;
+        } else {
+            memo_prev->next = node->next;
+        }
 
         return 1;
     }
@@ -63,14 +73,16 @@ int remove_node_from_list(const StudentList *list, const char *matricule) {
 }
 
 void print_list(StudentList *list) {
-    const StudentNode *node = list->head;
+    if (list != NULL) {
+        const StudentNode *node = list->head;
 
-    while (node != NULL) {
-        print_student(node->student);
-        node = node->next;
-    }
+        while (node != NULL) {
+            print_student(node->student);
+            node = node->next;
+        }
 
-    if (list->head == NULL) {
-        printf("Empty list");
-    }
+        if (list->head == NULL) {
+            printf("*\n*** Liste vide!\n");
+        }
+    } else printf("\n*** Liste vide\n");
 }

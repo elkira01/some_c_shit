@@ -5,12 +5,16 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include "date.h"
+
 typedef struct Student Student;
 
 struct Student {
     char *first_name;
     char *last_name;
     char *matricule;
+    double notes[5];
+    Date *birth_date;
 };
 
 void print_student(Student student);
