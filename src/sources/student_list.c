@@ -38,10 +38,10 @@ StudentNode *find_node_in_list(const StudentList *list, const char *matricule) {
     while (node != NULL && *(node->student.matricule) != *matricule) {
         node = node->next;
     }
-
     if (node != NULL) {
         return node;
     }
+
     return NULL;
 }
 
@@ -57,8 +57,6 @@ int remove_node_from_list(const StudentList *list, const char *matricule) {
     if (node != NULL) {
         memo_prev->next = node->next;
 
-        free(node);
-
         return 1;
     }
     return 0;
@@ -68,7 +66,7 @@ void print_list(StudentList *list) {
     const StudentNode *node = list->head;
 
     while (node != NULL) {
-        display_student(node->student);
+        print_student(node->student);
         node = node->next;
     }
 

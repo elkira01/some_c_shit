@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void display_student(const Student student) {
-    printf("\nFirst name: %s\nLast name: %s\nMatricule: %s\n\n", student.first_name, student.last_name,
+void print_student(const Student student) {
+    printf("\n[First name]: %s\n[Last name]: %s\n[Matricule]: %s\n\n", student.first_name, student.last_name,
            student.matricule);
 }
 

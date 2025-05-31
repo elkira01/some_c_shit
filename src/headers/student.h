@@ -13,7 +13,7 @@ struct Student {
     char *matricule;
 };
 
-void display_student(Student student);
+void print_student(Student student);
 
 Student create_student();
 #endif //STUDENT_H
